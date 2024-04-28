@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "536726185629",
+    "firebase_url": "https://my-iot-sem-default-rtdb.firebaseio.com",
+    "project_id": "my-iot-sem",
+    "storage_bucket": "my-iot-sem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536726185629:android:be638190b9489af3d65674",
+        "android_client_info": {
+          "package_name": "com.example.mysem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJp2Qe7TkK-593-qIS-9jKmfDzGsiV0QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536726185629:android:8112bc9610b4a5c1d65674",
+        "android_client_info": {
+          "package_name": "com.example.smart_energy_managment_mobile_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJp2Qe7TkK-593-qIS-9jKmfDzGsiV0QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
