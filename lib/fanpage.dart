@@ -9,7 +9,7 @@ class FanPage extends StatefulWidget {
 class _FanPageState extends State<FanPage> {
   double _progressValue = 0.0;
 
-  // Firebase veritabanı referansını oluşturun
+  // Firebase veritabanı referansını oluşturur
   final DatabaseReference _fanSpeedRef =
       FirebaseDatabase.instance.reference().child('fan_speed');
 
