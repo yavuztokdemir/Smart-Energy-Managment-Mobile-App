@@ -7,19 +7,19 @@ class FanPage extends StatefulWidget {
 }
 
 class _FanPageState extends State<FanPage> {
-  double _progressValue = 0.0;
+  bool _isOn = false; // Fanın başlangıçta kapalı olduğunu varsayalım
 
   // Firebase veritabanı referansını oluşturur
-  final DatabaseReference _fanSpeedRef =
-      FirebaseDatabase.instance.reference().child('fan_speed');
+  final DatabaseReference _fanStateRef =
+      FirebaseDatabase.instance.reference().child('fan_state');
 
-  void _updateProgress(double value) {
+  void _toggleFanState() {
     setState(() {
-      _progressValue = value;
+      _isOn = !_isOn;
     });
 
-    // Değer 100'e bölünerek Firebase veritabanına gönderilir
-    _fanSpeedRef.set((value).toInt());
+    // Değeri Firebase veritabanına gönder (true = açık, false = kapalı)
+    _fanStateRef.set(_isOn ? 1 : 0);
   }
 
   @override
@@ -35,51 +35,10 @@ class _FanPageState extends State<FanPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: CircularProgressIndicator(
-                    backgroundColor: Color(0xFF222831),
-                    // Değeri 100'e böldükten sonra kullan
-                    value: _progressValue / 100,
-                    strokeWidth: 10,
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                  ),
-                ),
-                Positioned(
-                  top: 60.0, // Ayarlama gerektiğinde konumu ayarlayın
-                  child: Text(
-                    "Fan Hızı",
-                    style: TextStyle(
-                      fontSize: 24, // Her iki metni de aynı boyuta ayarlayın
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 70.0, // Ayarlama gerektiğinde konumu ayarlayın
-                  child: Text(
-                    "${(_progressValue).toInt()}",
-                    style: TextStyle(
-                        fontSize: 24,
-                        color: Colors
-                            .white), // Her iki metni de aynı boyuta ayarlayın
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 20),
-            Slider(
-              value: _progressValue,
-              onChanged: _updateProgress,
-              min: 0,
-              max: 100,
-              divisions: 100,
-              activeColor: Colors.blue,
-              inactiveColor: Color(0xFF222831),
+            ElevatedButton(
+              onPressed: _toggleFanState,
+              child: Text(_isOn ? 'Kapat' : 'Aç'),
             ),
           ],
         ),
